@@ -1,0 +1,76 @@
+-- Enter the following expressions into ghci. What are their types?
+
+ghci> :t 5 + 8
+5 + 8 :: Num a => a
+ghci> 5 + 8
+13
+
+ghci> :t 3 * 5 + 8
+3 * 5 + 8 :: Num a => a
+ghci> 3 * 5 + 8
+23
+
+ghci> :t 2 + 4
+2 + 4 :: Num a => a
+ghci> 2 + 4
+6
+
+ghci> :t (+) 2 4
+(+) 2 4 :: Num a => a
+ghci> (+) 2 4
+6
+
+ghci> :t sqrt 16
+sqrt 16 :: Floating a => a
+ghci> sqrt 16
+4.0
+
+ghci> :t succ 6
+succ 6 :: (Enum a, Num a) => a
+ghci> succ 6
+7
+
+ghci> :t succ 7
+succ 7 :: (Enum a, Num a) => a
+ghci> succ 7
+8
+
+ghci> :t pred 9
+pred 9 :: (Enum a, Num a) => a
+ghci> pred 9
+8
+
+ghci> :t pred 8
+pred 8 :: (Enum a, Num a) => a
+ghci> pred 8
+7
+
+ghci> :t sin (pi / 2)
+sin (pi / 2) :: Floating a => a
+ghci> sin (pi / 2)
+1.0
+
+ghci> :t truncate pi
+truncate pi :: Integral b => b
+ghci> truncate pi
+3
+
+ghci> :t round 3.5
+round 3.5 :: Integral b => b
+ghci> round 3.5
+4
+
+ghci> :t round 3.4
+round 3.4 :: Integral b => b
+ghci> round 3.4
+3
+
+ghci> :t floor 3.7
+floor 3.7 :: Integral b => b
+ghci> floor 3.7
+3
+
+ghci> :t ceiling 3.3
+ceiling 3.3 :: Integral b => b
+ghci> ceiling 3.3
+4

@@ -43,7 +43,7 @@ more visible in the list the first exercise of a group is in bold italics.
 
 | Exercise       | Solved | Page | Chapter |
 | -------------- | ------ | ---- | ------- |
-| **_1_a_1_**    |        | 16   | 1. Getting started |
+| **_1_a_1_**    | yes    | 16   | 1. Getting started |
 | 1_a_2          |        |      | |
 | 1_a_3          |        |      | |
 | 1_a_4          |        |      | |
