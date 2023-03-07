@@ -1,0 +1,15 @@
+-- From ghci, type :? to print some help. Define a variable, such as let x = 1,
+-- then type :show bindings. What do you see?
+
+ghci> :?
+   ...
+
+   :show bindings              show the current bindings made at the prompt
+   ...
+
+ghci> let x = 1
+
+ghci> :show bindings
+x :: Num a => a = _
+
+-- We see a type of the bound variable 'x'
