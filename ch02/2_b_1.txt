@@ -1,0 +1,17 @@
+-- Haskell provides a standard function, last :: [a] -> a, that returns the last
+-- element of a list. From reading the type alone, what are the possible valid
+-- behaviours (omitting crashes and infinite loops) that this function could
+-- have? What are a few things that this function clearly cannot do?
+
+-- Possible valid behaviours could be
+--   - returning the first element of the list
+--   - returning an element in the middle of the list
+--   - returning the last element of the list
+--   ...
+
+-- This function clearly cannot
+--   - return an element of the list at a specified index because it has just
+--     one parameter
+--   - return a sublist of the list
+--   - be an identity function (return its argument)
+--   ...
