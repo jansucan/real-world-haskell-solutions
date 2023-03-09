@@ -1,0 +1,14 @@
+-- Load your lastButOne function into ghci, and try it out on lists of different
+-- lengths. What happens when you pass it a list that's too short?
+
+ghci> :l 2_b_2.hs
+[1 of 1] Compiling Main             ( 2_b_2.hs, interpreted )
+Ok, one module loaded.
+ghci> lastButOne [1, 2, 3, 4]
+3
+ghci> lastButOne [1, 2, 3]
+2
+ghci> lastButOne [1, 2]
+1
+ghci> lastButOne [1]
+*** Exception: Prelude.tail: empty list

@@ -50,7 +50,7 @@ more visible in the list the first exercise of a group is in bold italics.
 | **_2_a_1_**    | yes    | 25   | 2. Types and functions |
 | **_2_b_1_**    | yes    | 39   | |
 | 2_b_2          | yes    |      | |
-| 2_b_3          |        |      | |
+| 2_b_3          | yes    |      | |
 | **_3_a_1_**    |        | 60   | 3. Defining types, streamlining functions |
 | 3_a_2          |        |      | |
 | **_3_b_1_**    |        | 69   | |
