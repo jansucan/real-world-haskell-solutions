@@ -1,5 +1,5 @@
 # Real World Haskell solutions
-
+0;115;0c
 These are solutions to exercises from me reading the first edition of the [the
 Real World Haskell book](https://book.realworldhaskell.org/). I hope they will
 be helpful in your journey to the world of Haskell.
@@ -52,7 +52,7 @@ more visible in the list the first exercise of a group is in bold italics.
 | 2_b_2          | yes    |      | |
 | 2_b_3          | yes    |      | |
 | **_3_a_1_**    | yes    | 60   | 3. Defining types, streamlining functions |
-| 3_a_2          |        |      | |
+| 3_a_2          | yes    |      | |
 | **_3_b_1_**    |        | 69   | |
 | 3_b_2          |        |      | |
 | 3_b_3          |        |      | |
