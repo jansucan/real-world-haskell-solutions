@@ -54,7 +54,7 @@ more visible in the list the first exercise of a group is in bold italics.
 | **_3_a_1_**    | yes    | 60   | 3. Defining types, streamlining functions |
 | 3_a_2          | yes    |      | |
 | **_3_b_1_**    | yes    | 69   | |
-| 3_b_2          |        |      | |
+| 3_b_2          | yes, in 3_b_1 |      | |
 | 3_b_3          |        |      | |
 | 3_b_4          |        |      | |
 | 3_b_5          |        |      | |

@@ -1,6 +1,10 @@
--- Write a function that computes the number of elements in a list. To test it,
--- ensure that it gives the same answers as the standard length function.
+-- 1. Write a function that computes the number of elements in a list. To test
+--    it, ensure that it gives the same answers as the standard length function.
+--
+-- 2. Add a type signature for your function to your source file. To test it,
+--    load the source file into ghci again.
 
+myLength :: [a] -> Int
 myLength (x:xs) = 1 + myLength xs
 myLength []     = 0
 
