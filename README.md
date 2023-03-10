@@ -1,5 +1,5 @@
 # Real World Haskell solutions
-0;115;0c
+
 These are solutions to exercises from me reading the first edition of the [the
 Real World Haskell book](https://book.realworldhaskell.org/). I hope they will
 be helpful in your journey to the world of Haskell.
