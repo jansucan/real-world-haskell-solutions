@@ -57,7 +57,7 @@ more visible in the list the first exercise of a group is in bold italics.
 | 3_b_2          | yes, in 3_b_1 |      | |
 | 3_b_3          | yes    |      | |
 | 3_b_4          | yes    |      | |
-| 3_b_5          |        |      | |
+| 3_b_5          | yes    |      | |
 | 3_b_6          |        | 70   | |
 | 3_b_7          |        |      | |
 | 3_b_8          |        |      | |
