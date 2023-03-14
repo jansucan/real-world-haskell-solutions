@@ -11,9 +11,12 @@ There is often more than one solution to an exercise. If your solution is
 different but meets the assignment, it is the right one.
 
 The intention is for the exercises to be solved as by a beginner, with all the
-things that a seasoned Haskell programmer would have done differently. Where
-possible, the solutions should use only knowledge from the preceding parts of
-the book.
+things that a seasoned Haskell programmer would have done differently. The
+solutions should mostly use only knowledge from the preceding parts of the
+book. Exceptions to this are cases where such approach would lead to too many
+additional lines of code or to distracting the reader from the main idea of an
+exercise. Advanced topics from the subsequent chapters should be avoided,
+though.
 
 ## Exercises
 
