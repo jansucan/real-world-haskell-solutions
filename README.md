@@ -68,7 +68,7 @@ more visible in the list the first exercise of a group is in bold italics.
 | 3_b_10         | yes, in 3_b_9 |      | |
 | 3_b_11         | yes, in 3_b_9 |      | |
 | 3_b_12         | yes, in 3_b_9 |      | |
-| **_4_a_1_**    |        | 84   | 4. Functional programming |
+| **_4_a_1_**    | yes    | 84   | 4. Functional programming |
 | 4_a_2          |        |      | |
 | 4_a_3          |        |      | |
 | 4_a_4          |        |      | |
