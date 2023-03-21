@@ -76,8 +76,8 @@ more visible in the list the first exercise of a group is in bold italics.
 | 4_b_2          | yes    | 98   | |
 | 4_b_3          | yes    |      | |
 | 4_b_4          | yes    |      | |
-| 4_b_5          |        |      | |
-| 4_b_6          |        |      | |
+| 4_b_5          | yes, in 4_b_6 |      | |
+| 4_b_6          | yes    |      | |
 | 4_b_7          |        |      | |
 | 4_b_8          |        |      | |
 | 4_b_9          |        |      | |
