@@ -81,7 +81,7 @@ more visible in the list the first exercise of a group is in bold italics.
 | 4_b_7          | yes    |      | |
 | 4_b_8          | yes, in 4_b_9 |      | |
 | 4_b_9          | yes    |      | |
-| 4_b_10         |        |      | |
+| 4_b_10         | yes    |      | |
 | **_5_a_1_**    |        | 130  | 5. Writing a library: working with JSON data |
 | 5_a_2          |        |      | |
 | **_6_a_1_**    |        | 162  | 6. Using typeclasses |
