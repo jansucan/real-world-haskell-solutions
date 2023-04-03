@@ -26,22 +26,42 @@ There are a few kinds of exercises:
 - Answer a question
 - Write an implementation
 
-Solutions to the first two kinds of exercises are provided in comments.
+Solutions to the first two kinds of exercises are provided in comments in
+Haskell source files.
 
-Some exercises are not unambiguous. In these cases I describe my additional
-assumptions and thought process in comments.
+### Ambiguity and mistakes in the assignments
 
-Some solution implementations depend on [the example code from the
+Assignments of the exercises are taken exactly as they are in the printed
+version of the book without correcting any mistakes. Those are corrected in
+comments immediately following the assignments.
+
+Some exercises are unclear or they seem to contain contradicting information. In
+these cases I describe my additional assumptions and thought process in
+comments.
+
+### Solutions using code from the examples
+
+Some solution implementations use [the example code from the
 book](https://resources.oreilly.com/examples/9780596514983). The complete
 examples repository these solutions are base on is added as a submodule in the
-'examples' directory. If a solution of an exercise depends on source files from
-the examples, those files are copied to a directory of that solution.
+'examples' directory.
 
-Here is a list of the exercises. Format of an exercise label is
-'\<chapter\>\_\<group\>\_\<exercise\>'. Some chapters contain more groups of
-exercises. To differentiate those, an exercises group letter is included (the
-exact letters don't have a connection to the book). To make the exercise groups
-more visible in the list the first exercise of a group is in bold italics.
+If a solution of an exercise depends on more source code from the examples, the
+whole files are copied to a directory of that solution.
+
+If not much code is needed, then just the required parts are copied directly to
+the file with implementation and marked by comments.
+
+Any changes to the example code required for implementing the solution are put
+into separate commits.
+
+### List of the exercises
+
+Format of an exercise label is '\<chapter\>\_\<group\>\_\<exercise\>'. Some
+chapters contain more groups of exercises. To differentiate those, an exercises
+group letter is included (the exact letters don't have a connection to the
+book). To make the exercise groups more visible in the list the first exercise
+of a group is in bold italics.
 
 
 | Exercise       | Solved | Page | Chapter |
