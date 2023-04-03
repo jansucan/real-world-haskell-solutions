@@ -140,4 +140,5 @@ more visible in the list the first exercise of a group is in bold italics.
 ## Bug reports
 
 If you find an error in a solution or anything that should be described more
-clearly, feel free to let me know.
+clearly, feel free to let me know by opening an issue here or a pull request
+here.
