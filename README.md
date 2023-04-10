@@ -102,8 +102,8 @@ of a group is in bold italics.
 | 4_b_8          | yes, in 4_b_9 |      | |
 | 4_b_9          | yes    |      | |
 | 4_b_10         | yes    |      | |
-| **_5_a_1_**    |        | 130  | 5. Writing a library: working with JSON data |
-| 5_a_2          |        |      | |
+| **_5_a_1_**    | yes    | 130  | 5. Writing a library: working with JSON data |
+| 5_a_2          | yes, in 5_a_1 |      | |
 | **_6_a_1_**    |        | 162  | 6. Using typeclasses |
 | 6_a_2          |        |      | |
 | **_8_a_1_**    |        | 205  | 8. Efficient file processing, regular expressions, and file name matching |

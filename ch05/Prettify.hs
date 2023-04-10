@@ -1,7 +1,7 @@
 module Prettify
     (
     -- * Constructors
-      Doc
+      Doc(..)
     -- * Basic combinators
     , (Prettify.<>)
     , empty
