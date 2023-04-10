@@ -3,7 +3,7 @@ module Prettify
     -- * Constructors
       Doc
     -- * Basic combinators
-    , (<>)
+    , (Prettify.<>)
     , empty
     , char
     , text
@@ -65,7 +65,7 @@ line = Line
 
 {-- snippet hcat --}
 hcat :: [Doc] -> Doc
-hcat = fold (<>)
+hcat = fold (Prettify.<>)
 
 fold :: (Doc -> Doc -> Doc) -> [Doc] -> Doc
 fold f = foldr f empty
@@ -76,7 +76,7 @@ fsep :: [Doc] -> Doc
 fsep = fold (</>)
 
 (</>) :: Doc -> Doc -> Doc
-x </> y = x <> softline <> y
+x </> y = x Prettify.<> softline Prettify.<> y
 
 softline :: Doc
 softline = group line
@@ -99,7 +99,7 @@ flatten other          = other
 punctuate :: Doc -> [Doc] -> [Doc]
 punctuate p []     = []
 punctuate p [d]    = [d]
-punctuate p (d:ds) = (d <> p) : punctuate p ds
+punctuate p (d:ds) = (d Prettify.<> p) : punctuate p ds
 {-- /snippet punctuate --}
 
 {-- snippet compact --}

@@ -27,13 +27,13 @@ renderJValue (JArray ary) = series '[' ']' renderJValue ary
 {-- snippet renderJValue.object --}
 renderJValue (JObject obj) = series '{' '}' field obj
     where field (name,val) = string name
-                          <> text ": "
-                          <> renderJValue val
+                          Prettify.<> text ": "
+                          Prettify.<> renderJValue val
 {-- /snippet renderJValue.object --}
 
 {-- snippet enclose --}
 enclose :: Char -> Char -> Doc -> Doc
-enclose left right x = char left <> x <> char right
+enclose left right x = char left Prettify.<> x Prettify.<> char right
 {-- /snippet enclose --}
 
 {-- snippet hexEscape --}
@@ -46,14 +46,14 @@ hexEscape c | d < 0x10000 = smallHex d
 {-- snippet smallHex --}
 smallHex :: Int -> Doc
 smallHex x  = text "\\u"
-           <> text (replicate (4 - length h) '0')
-           <> text h
+           Prettify.<> text (replicate (4 - length h) '0')
+           Prettify.<> text h
     where h = showHex x ""
 {-- /snippet smallHex --}
 
 {-- snippet astral --}
 astral :: Int -> Doc
-astral n = smallHex (a + 0xd800) <> smallHex (b + 0xdc00)
+astral n = smallHex (a + 0xd800) Prettify.<> smallHex (b + 0xdc00)
     where a = (n `shiftR` 10) .&. 0x3ff
           b = n .&. 0x3ff
 {-- /snippet astral --}
