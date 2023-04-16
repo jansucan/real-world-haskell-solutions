@@ -1,0 +1,33 @@
+-- What is the type of (,)? When you use it in ghci, what does it do? What about
+-- (,,)?
+
+-- (,) is a 2-tuple data constructor
+
+ghci> :t (,)
+(,) :: a -> b -> (a, b)
+
+ghci> (,) 1 2
+(1,2)
+
+ghci> t = (,) 1
+ghci> :t t
+t :: Num a => b -> (a, b)
+ghci> t 2
+(1,2)
+
+-- (,,) is a 3-tuple data constructor
+
+ghci> :t (,,)
+(,,) :: a -> b -> c -> (a, b, c)
+
+ghci> (,,) 1 2 3
+(1,2,3)
+
+ghci> t = (,,) 1
+ghci> :t t
+t :: Num a => b -> c -> (a, b, c)
+ghci> u = t 2
+ghci> :t u
+u :: (Num a, Num b) => c -> (a, b, c)
+ghci> u 3
+(1,2,3)
