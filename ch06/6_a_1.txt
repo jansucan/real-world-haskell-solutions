@@ -1,0 +1,22 @@
+-- Load the Control.Arrow module into ghci, and find out what the second
+-- function does.
+
+-- The example immediately preceding the exercise (instance of the JSON
+-- typeclass for the JObj type) is a big hint about what the 'second' function
+-- does.
+--
+-- It turns a function F accepting a value of type B and returning a value of
+-- type C into a function accepting a 2-tuple and returning a 2-tuple. The
+-- returned function applies F to the second element of the input 2-tuple (which
+-- is of type B) and keeps the first element of the 2-tuple unchanged.
+
+ghci> import Control.Arrow
+
+ghci> :t second
+second :: Arrow a => a b c -> a (d, b) (d, c)
+
+ghci> map (second odd) [(1, 1), (2, 2), (3, 3), (4, 4)]
+[(1,True),(2,False),(3,True),(4,False)]
+
+ghci> map (second (\x -> 2 * x)) [(1, 1), (2, 2), (3, 3), (4, 4)]
+[(1,2),(2,4),(3,6),(4,8)]
