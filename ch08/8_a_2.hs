@@ -1,10 +1,29 @@
--- While filesystems on Unix are usually case-sensitive (e.g. “G” vs. “g”) in
--- file names, Windows filesystems are not. Add a parameter to the globToRegex
--- and matchesGlob functions that allows control over case sensitive matching.
+-- 1. While filesystems on Unix are usually case-sensitive (e.g. “G” vs. “g”) in
+--    file names, Windows filesystems are not. Add a parameter to the
+--    globToRegex and matchesGlob functions that allows control over case
+--    sensitive matching.
+--
+-- 2. Although we've gone to some lengths to write a portable namesMatching
+--    function, the function uses our case sensitive globToRegex function. Find
+--    a way to modify namesMatching to be case sensitive on Unix, and case
+--    insensitive on Windows, without modifying its type signature. (Hint:
+--    consider reading the documentation for System.FilePath to look for a
+--    variable that tells us whether we're running on a Unix-like system, or on
+--    Windows.)
 
 -- For simplicity, let's assume that only a-z and A-Z letters are affected by
 -- the case sensitivity option. Also, probably not all error cases are detected
 -- when converting a glob to regex.
+
+{-- From examples/examples/ch08/Glob.hs modified according to the assignment --}
+import Control.Exception
+import Control.Monad (forM)
+
+import System.Directory (doesDirectoryExist, doesFileExist,
+                         getCurrentDirectory, getDirectoryContents)
+
+import System.FilePath (dropTrailingPathSeparator, splitFileName, (</>), searchPathSeparator)
+{-- End of code from examples --}
 
 {-- From examples/examples/ch08/GlobRegex.hs modified according to the assignment --}
 import Data.Char
@@ -107,3 +126,106 @@ caseOutsideCharClass c opt = if shouldBeInBrackets
 -- True
 -- ghci> matchesGlob "fXawD.c" "f[W-d]*.c" IgnoreCase
 -- True
+
+
+-- There are three possible variables in System.FilePath that could be used for
+-- differentiating between the platforms: pathSeparator, pathSeparators, and
+-- searchPathSeparator. Even though they don't seem as a direct way for
+-- detecting the platform, it is possible to use them.
+
+{-- From examples/examples/ch08/Glob.hs modified according to the assignment
+ --
+ -- The required imports have been moved from here to the top of this source
+ -- file.
+ --
+ -- The following error in the listMatches function
+ --
+ --   Ambiguous type variable ‘e0’ arising from a use of ‘handle’
+ --   prevents the constraint ‘(Exception e0)’ from being solved.
+ --   Probable fix: use a type annotation to specify what ‘e0’ should be.
+ --
+ -- has been fixed according to
+ --
+ --   https://stackoverflow.com/questions/12030977/ambiguous-type-variable-arising-from-the-use-of-handle
+ --}
+namesMatching :: String -> IO [FilePath]
+
+isPattern :: String -> Bool
+isPattern = any (`elem` "[*?")
+
+namesMatching pat
+  | not (isPattern pat) = do
+    exists <- doesNameExist pat
+    return (if exists then [pat] else [])
+
+  | otherwise = do
+    case splitFileName pat of
+      ("", baseName) -> do
+          curDir <- getCurrentDirectory
+          listMatches curDir baseName
+      (dirName, baseName) -> do
+          dirs <- if isPattern dirName
+                  then namesMatching (dropTrailingPathSeparator dirName)
+                  else return [dirName]
+          let listDir = if isPattern baseName
+                        then listMatches
+                        else listPlain
+          pathNames <- forM dirs $ \dir -> do
+                           baseNames <- listDir dir baseName
+                           return (map (dir </>) baseNames)
+          return (concat pathNames)
+
+listMatches :: FilePath -> String -> IO [String]
+listMatches dirName pat = do
+    dirName' <- if null dirName
+                then getCurrentDirectory
+                else return dirName
+    handle (\(SomeException _)  -> return []) $ do
+        names <- getDirectoryContents dirName'
+        let names' = if isHidden pat
+                     then filter isHidden names
+                     else filter (not . isHidden) names
+        return (filter (`filterMatchesGlob` pat) names')
+
+isHidden ('.':_) = True
+isHidden _       = False
+
+listPlain :: FilePath -> String -> IO [String]
+listPlain dirName baseName = do
+    exists <- if null baseName
+              then doesDirectoryExist dirName
+              else doesNameExist (dirName </> baseName)
+    return (if exists then [baseName] else [])
+
+doesNameExist :: FilePath -> IO Bool
+
+doesNameExist name = do
+    fileExists <- doesFileExist name
+    if fileExists
+      then return True
+      else doesDirectoryExist name
+{-- End of code from examples --}
+
+filterMatchesGlob :: FilePath -> String -> Bool
+filterMatchesGlob path glob = matchesGlob path glob caseSensitiveness
+
+caseSensitiveness :: MatchOptions
+caseSensitiveness = if isPlatformWindows
+                    then IgnoreCase
+                    else DontIgnoreCase
+
+isPlatformWindows :: Bool
+isPlatformWindows = (searchPathSeparator == windowsSearchPathSeparator)
+  where windowsSearchPathSeparator = ';'
+
+-- I haven't tested this solution on Windows, just Linux. On Linux, the case
+-- should not be ignored.
+
+-- ghci> namesMatching "8_A_1.hs"
+-- []
+-- ghci> namesMatching "8_a_1.hs"
+-- ["8_a_1.hs"]
+-- ghci> namesMatching "*regex*"
+-- []
+-- ghci> namesMatching "*Regex*"
+-- ["./GlobRegex.hs"]
