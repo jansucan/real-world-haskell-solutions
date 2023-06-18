@@ -109,7 +109,7 @@ of a group is in bold italics.
 | **_8_a_1_**    | yes    | 205  | 8. Efficient file processing, regular expressions, and file name matching |
 | 8_a_2          | yes    |      | |
 | **_8_b_1_**    | yes, in 8_a_2 | 210  | |
-| 8_b_2          |        |      | |
+| 8_b_2          | yes    |      | |
 | 8_b_3          |        |      | |
 | **_8_b_1_**    |        | 211  | |
 | 8_b_2          |        |      | |
