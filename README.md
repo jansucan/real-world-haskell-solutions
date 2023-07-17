@@ -55,6 +55,11 @@ the file with implementation and marked by comments.
 Any changes to the example code required for implementing the solution are put
 into separate commits.
 
+### Platform
+
+The solutions are implemented and tested in a Linux environment. This also
+includes solutions that could have been made multiplatform.
+
 ### List of the exercises
 
 Format of an exercise label is '\<chapter\>\_\<group\>\_\<exercise\>'. Some
