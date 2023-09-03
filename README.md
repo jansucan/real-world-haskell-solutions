@@ -121,7 +121,7 @@ are prefixed with 'Module_'.
 | **_8_b_1_**    | yes, in 8_a_2 | 210  | |
 | 8_b_2          | yes    |      | |
 | 8_b_3          | yes    |      | |
-| **_8_c_1_**    | yes    | 211  | |
+| **_Module_8_c_1_** | yes    | 211  | |
 | 8_c_2          | yes    |      | |
 | **_8_d_1_**    |        | 212  | |
 | **_9_a_1_**    |        | 221  | 9. I/O case study: a library for searching the filesystem |
