@@ -63,7 +63,7 @@ includes solutions that could have been made multiplatform.
 ### List of the exercises
 
 Format of an exercise label is '\<chapter\>\_\<group\>\_\<exercise\>'. Some
-chapters contain more groups of exercises. To differentiate those, an exercises
+chapters contain more groups of exercises. To differentiate those, an exercise
 group letter is included (the exact letters don't have a connection to the
 book). To make the exercise groups more visible in the list the first exercise
 of a group is in bold italics.
