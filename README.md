@@ -62,11 +62,16 @@ includes solutions that could have been made multiplatform.
 
 ### List of the exercises
 
-Format of an exercise label is '\<chapter\>\_\<group\>\_\<exercise\>'. Some
+Format of an exercise label is '{Module_}\<chapter\>\_\<group\>\_\<exercise\>'. Some
 chapters contain more groups of exercises. To differentiate those, an exercise
 group letter is included (the exact letters don't have a connection to the
 book). To make the exercise groups more visible in the list the first exercise
 of a group is in bold italics.
+
+If a solution is intended to be used in solutions to other exercises, to reduce code
+duplication, it is imported as a Haskell module. For this to work, the naming
+conventions for Haskell modules need to be followed. The names of such source files
+are prefixed with 'Module_'.
 
 
 | Exercise       | Solved | Page | Chapter |

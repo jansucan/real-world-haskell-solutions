@@ -1,5 +1,7 @@
 -- Write a version of globToRegex that uses the type signature earlier.
 
+module Module_8_c_1 (GlobError, globToRegex) where
+
 {-- From examples/examples/ch08/GlobRegex.hs modified according to the assignment --}
 import Text.Regex.Posix ((=~))
 
