@@ -123,7 +123,7 @@ are prefixed with 'Module_'.
 | 8_b_3          | yes    |      | |
 | **_Module_8_c_1_** | yes    | 211  | |
 | 8_c_2          | yes    |      | |
-| **_8_d_1_**    |        | 212  | |
+| **_8_d_1_**    | yes    | 212  | |
 | **_9_a_1_**    |        | 221  | 9. I/O case study: a library for searching the filesystem |
 | **_9_b_1_**    |        | 228  | |
 | 9_b_2          |        |      | |
