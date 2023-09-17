@@ -1,0 +1,13 @@
+-- Is the order in which we call bracket and handle important? Why?
+
+-- The assignment is not completely clear. The 'bracket' function has three
+-- actions. It's not clear what the order means here. When changing the order of
+-- the 'bracket' and 'handle', 'handle' can be used in just one action or in
+-- more of them.
+--
+-- Let's assume that changing the order means moving the 'handle' call to the
+-- "use" action of the 'bracket' so that it covers that whole action.
+
+-- The order is important. When the order is changed (see the assumption above),
+-- exceptions thrown in the "acquire" and "release" actions will not be caught
+-- by the 'handle' function.
