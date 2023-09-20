@@ -6,12 +6,13 @@ module ControlledVisit
     , isDirectory
     ) where
 
+import Control.Exception
 import Control.Monad (filterM, forM, liftM)
 import Data.List (partition)
 import Data.Maybe (isJust)
 import System.Directory (Permissions(..), getDirectoryContents,
                          getModificationTime, getPermissions)
-import System.Time (ClockTime(..))
+import Data.Time (UTCTime(..))
 import System.FilePath (takeExtension, (</>))
 import Control.Exception (bracket, handle)
 import System.IO (IOMode(..), hClose, hFileSize, openFile)
@@ -21,7 +22,7 @@ data Info = Info {
       infoPath :: FilePath
     , infoPerms :: Maybe Permissions
     , infoSize :: Maybe Integer
-    , infoModTime :: Maybe ClockTime
+    , infoModTime :: Maybe UTCTime
     } deriving (Eq, Ord, Show)
 
 getInfo :: FilePath -> IO Info
@@ -29,7 +30,7 @@ getInfo :: FilePath -> IO Info
 
 {-- snippet getInfo --}
 maybeIO :: IO a -> IO (Maybe a)
-maybeIO act = handle (\_ -> return Nothing) (Just `liftM` act)
+maybeIO act = handle (\(SomeException _) -> return Nothing) (Just `liftM` act)
 
 getInfo path = do
   perms <- maybeIO (getPermissions path)
@@ -39,15 +40,15 @@ getInfo path = do
 {-- /snippet getInfo --}
 
 {-- snippet traverse.type --}
-traverse :: ([Info] -> [Info]) -> FilePath -> IO [Info]
+traverse' :: ([Info] -> [Info]) -> FilePath -> IO [Info]
 {-- /snippet traverse.type --}
 {-- snippet traverse --}
-traverse order path = do
+traverse' order path = do
     names <- getUsefulContents path
     contents <- mapM getInfo (path : map (path </>) names)
     liftM concat $ forM (order contents) $ \info -> do
       if isDirectory info && infoPath info /= path
-        then traverse order (infoPath info)
+        then traverse' order (infoPath info)
         else return [info]
 
 getUsefulContents :: FilePath -> IO [String]
