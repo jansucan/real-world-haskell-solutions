@@ -9,7 +9,6 @@
 -- ghci> :m +Data.List
 
 -- Output of the following command is manually shortened and formatted for clarity
--- traverse' (reverse.sort) "test-9_b_1"
 -- ghci> traverse' (reverse.sort) "test-9_b_1"
 -- [Info {infoPath = "test-9_b_1/dirD/H", ...},
 --  Info {infoPath = "test-9_b_1/dirD/G", ...},
