@@ -1,0 +1,31 @@
+-- Using 'id' as a control function, 'traverse id' performs a preorder traversal of
+-- a tree: it returns a parent directory before its children. Write a control
+-- function that makes 'traverse' perform a postorder traversal, in which it
+-- returns children before their parent.
+
+-- ghci> :l ControlledVisit.hs
+-- [1 of 1] Compiling ControlledVisit  ( ControlledVisit.hs, interpreted )
+-- Ok, one module loaded.
+
+-- Output of the following commands is manually shortened and formatted for clarity
+-- ghci> traverse' id "test-9_b_1"
+-- [Info {infoPath = "test-9_b_1", ...},
+--  Info {infoPath = "test-9_b_1/dirC", ...},
+--  Info {infoPath = "test-9_b_1/dirC/F", ...},
+--  Info {infoPath = "test-9_b_1/dirC/E", ...},
+--  Info {infoPath = "test-9_b_1/A", ...},
+--  Info {infoPath = "test-9_b_1/B", ...},
+--  Info {infoPath = "test-9_b_1/dirD", ...},
+--  Info {infoPath = "test-9_b_1/dirD/G", ...},
+--  Info {infoPath = "test-9_b_1/dirD/H", ...}]
+
+-- ghci> traverse' (\list -> (tail list) ++ [(head list)]) "test-9_b_1"
+-- [Info {infoPath = "test-9_b_1/dirC/F", ...},
+--  Info {infoPath = "test-9_b_1/dirC/E", ...},
+--  Info {infoPath = "test-9_b_1/dirC", ...},
+--  Info {infoPath = "test-9_b_1/A", ...},
+--  Info {infoPath = "test-9_b_1/B", ...},
+--  Info {infoPath = "test-9_b_1/dirD/G", ...},
+--  Info {infoPath = "test-9_b_1/dirD/H", ...},
+--  Info {infoPath = "test-9_b_1/dirD", ...},
+--  Info {infoPath = "test-9_b_1", ...}]
