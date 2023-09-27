@@ -4,6 +4,7 @@ module ControlledVisit
     , getInfo
     , getUsefulContents
     , isDirectory
+    , traverse'
     ) where
 
 import Control.Exception

@@ -1,18 +1,15 @@
 -- Take the predicates and combinators from "Gluing predicates together" on page
 -- 224 and make them work with our new Info type.
 
+module Module_9_b_3 where
+
 {-- From examples/examples/ch09/BetterPredicate.hs modified according to the assignment --}
 import Data.Time (UTCTime(..))
 import System.Directory (Permissions(..))
 import System.FilePath (takeExtension)
 
+import ControlledVisit (Info(..))
 
-data Info = Info {
-      infoPath :: FilePath
-    , infoPerms :: Maybe Permissions
-    , infoSize :: Maybe Integer
-    , infoModTime :: Maybe UTCTime
-    } deriving (Eq, Ord, Show)
 
 type InfoF a = Info -> a
 
@@ -51,9 +48,10 @@ myTest2 = (liftPath takeExtension `equalP` ".cpp") `andP`
           (infoSize `greaterP` (Just 131072))
 {-- End of code from examples --}
 
--- ghci> :l 9_b_3.hs
--- [1 of 1] Compiling Main             ( 9_b_3.hs, interpreted )
--- Ok, one module loaded.
+-- ghci> :l Module_9_b_3.hs
+-- [1 of 2] Compiling ControlledVisit  ( ControlledVisit.hs, interpreted )
+-- [2 of 2] Compiling Module_9_b_3     ( Module_9_b_3.hs, interpreted )
+-- Ok, two modules loaded.
 
 -- ghci> infoA = Info "asdf.cpp" Nothing (Just 131072) Nothing
 -- ghci> myTest2 infoA
