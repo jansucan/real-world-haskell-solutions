@@ -52,9 +52,6 @@ whole files are copied to a directory of that solution.
 If not much code is needed, then just the required parts are copied directly to
 the file with implementation and marked by comments.
 
-Any changes to the example code required for implementing the solution are put
-into separate commits.
-
 ### Platform
 
 The solutions are implemented and tested in a Linux environment. This also
