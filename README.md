@@ -130,7 +130,7 @@ are prefixed with 'Module_'.
 | 9_c_2          | yes    |      | |
 | 9_c_3          | yes    |      | |
 | **_9_d_1_**    | yes    | 234  | |
-| 9_d_2          |        |      | |
+| 9_d_2          | yes    |      | |
 | **_10_a_1_**   |        | 254  | 10. Code case study: parsing a binary data format |
 | 10_a_2         |        |      | |
 | 10_a_3         |        |      | |
