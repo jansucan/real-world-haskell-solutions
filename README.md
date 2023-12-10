@@ -134,9 +134,9 @@ are prefixed with 'Module_'.
 | **_10_a_1_**   | yes    | 254  | 10. Code case study: parsing a binary data format |
 | 10_a_2         | yes, in 10_a_1  |      | |
 | 10_a_3         | yes, in 10_a_1  |      | |
-| **_12_a_1_**   |        | 274  | 12. Barcode recognition |
-| 12_a_2         |        |      | |
-| 12_a_3         |        |      | |
+| **_12_a_1_**   | yes    | 274  | 12. Barcode recognition |
+| 12_a_2         | yes, in 12_a_1  |      | |
+| 12_a_3         | yes, in 12_a_1  |      | |
 | **_13_a_1_**   |        | 316  | 13. Data structures |
 | **_14_a_1_**   |        | 352  | 14. Monads |
 | **_15_a_1_**   |        | 382  | 15. Programming with monads |
