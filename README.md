@@ -138,7 +138,7 @@ are prefixed with 'Module_'.
 | 12_a_2         | yes, in 12_a_1  |      | |
 | 12_a_3         | yes, in 12_a_1  |      | |
 | **_13_a_1_**   | yes    | 316  | 13. Data structures |
-| **_14_a_1_**   |        | 352  | 14. Monads |
+| **_14_a_1_**   | yes    | 352  | 14. Monads |
 | **_15_a_1_**   |        | 382  | 15. Programming with monads |
 | 15_a_2         |        |      | |
 | 15_a_3         |        |      | |
