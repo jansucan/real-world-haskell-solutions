@@ -1,8 +1,9 @@
 # Real World Haskell solutions
 
 These are solutions to exercises from me reading the first edition of the [the
-Real World Haskell book](https://book.realworldhaskell.org/). I hope they will
-be helpful in your journey to the world of Haskell.
+Real World Haskell book](https://book.realworldhaskell.org/). Publishing the
+solutions like this helps me in being more thorough in reading the book. I also
+hope they will be helpful in your journey to the world of Haskell.
 
 The goal is to provide solutions to all the exercises. I'm adding them gradually
 as I'm progressing through the book.
@@ -10,13 +11,19 @@ as I'm progressing through the book.
 There is often more than one solution to an exercise. If your solution is
 different but meets the assignment, it is the right one.
 
-The intention is for the exercises to be solved as by a beginner, with all the
-things that a seasoned Haskell programmer would have done differently. The
-solutions should mostly use only knowledge from the preceding parts of the
-book. Exceptions to this are cases where such approach would lead to too many
-additional lines of code or to distracting the reader from the main idea of an
-exercise. Advanced topics from the subsequent chapters should be avoided,
-though.
+My original intention was for the exercises to be solved as by a beginner, with
+all the things that a seasoned Haskell programmer would have done
+differently. The solutions should have mostly used only knowledge from the
+preceding parts of the book. Exceptions to this were cases where such approach
+would lead to too many additional lines of code or to distracting the reader
+from the main idea of an exercise. Advanced topics from the subsequent chapters
+should have been avoided, though.
+
+However, in about two thirds of the book I finally had to admit to myself that
+it was too challenging and got stuck. Then I took a detour to other Haskell
+books that were more suitable for beginners. Now I returned and I'm going to see
+how much difference it has made and whether I will be able to continue in the
+exercises.
 
 ## Exercises
 
