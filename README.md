@@ -146,8 +146,8 @@ are prefixed with 'Module_'.
 | 12_a_3         | yes, in 12_a_1  |      | |
 | **_13_a_1_**   | yes    | 316  | 13. Data structures |
 | **_14_a_1_**   | yes    | 352  | 14. Monads |
-| **_15_a_1_**   |        | 382  | 15. Programming with monads |
-| 15_a_2         |        |      | |
+| **_15_a_1_**   | yes    | 382  | 15. Programming with monads |
+| 15_a_2         | yes, in 15_a_1  |      | |
 | 15_a_3         |        |      | |
 | **_16_a_1_**   |        | 403  | 16. The Parsec parsing library |
 | 16_a_2         |        |      | |
