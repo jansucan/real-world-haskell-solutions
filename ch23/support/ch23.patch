@@ -1,0 +1,113 @@
+diff -rupN ch23/PodMainGUI.hs new-ch23/PodMainGUI.hs
+--- ch23/PodMainGUI.hs	2025-08-04 11:36:39.929319568 +0200
++++ new-ch23/PodMainGUI.hs	2025-08-04 09:03:27.606792410 +0200
+@@ -119,7 +119,7 @@ guiAdd gui dbh =
+     where procOK =
+               do url <- entryGetText (awEntry gui)
+                  widgetHide (addWin gui) -- Remove the dialog
+-                 add dbh url             -- Add to the DB
++                 addUrl dbh url             -- Add to the DB
+ {-- /snippet guiAdd --}
+ 
+ {-- snippet statusWindow --}
+@@ -184,7 +184,7 @@ guiFetch gui dbh =
+ {-- /snippet statusWindowFuncs --}
+ 
+ {-- snippet workerFuncs --}
+-add dbh url = 
++addUrl dbh url = 
+     do addPodcast dbh pc
+        commit dbh
+     where pc = Podcast {castId = 0, castURL = url}
+diff -rupN ch23/PodParser.hs new-ch23/PodParser.hs
+--- ch23/PodParser.hs	2025-08-04 11:36:39.930319562 +0200
++++ new-ch23/PodParser.hs	2025-08-03 20:50:15.690901819 +0200
+@@ -5,6 +5,8 @@ import PodTypes
+ import Text.XML.HaXml
+ import Text.XML.HaXml.Parse
+ import Text.XML.HaXml.Html.Generate(showattr)
++import Text.XML.HaXml.Posn
++import Text.XML.HaXml.Util
+ import Data.Char
+ import Data.List
+ 
+@@ -35,8 +37,8 @@ parse content name =
+     where parseResult = xmlParse name (stripUnicodeBOM content)
+           doc = getContent parseResult
+ 
+-          getContent :: Document -> Content
+-          getContent (Document _ _ e _) = CElem e
++          getContent :: Document Posn -> Content Posn
++          getContent d = docContent (posInNewCxt name Nothing) d
+           
+           {- | Some Unicode documents begin with a binary sequence;
+              strip it off before processing. -}
+@@ -50,36 +52,36 @@ Note that HaXml defines CFilter as:
+ 
+ > type CFilter = Content -> [Content]
+ -}
+-channel :: CFilter
++channel :: CFilter Posn
+ channel = tag "rss" /> tag "channel"
+ 
+-getTitle :: Content -> String
++getTitle :: Content Posn -> String
+ getTitle doc =
+     contentToStringDefault "Untitled Podcast" 
+         (channel /> tag "title" /> txt $ doc)
+ 
+-getEnclosures :: Content -> [Item]
++getEnclosures :: Content Posn -> [Item]
+ getEnclosures doc =
+     concatMap procItem $ getItems doc
+-    where procItem :: Content -> [Item]
++    where procItem :: Content Posn -> [Item]
+           procItem item = concatMap (procEnclosure title) enclosure
+               where title = contentToStringDefault "Untitled Episode"
+                                (keep /> tag "title" /> txt $ item)
+                     enclosure = (keep /> tag "enclosure") item
+ 
+-          getItems :: CFilter
++          getItems :: CFilter Posn
+           getItems = channel /> tag "item"
+ 
+-          procEnclosure :: String -> Content -> [Item]
++          procEnclosure :: String -> Content Posn -> [Item]
+           procEnclosure title enclosure =
+               map makeItem (showattr "url" enclosure)
+-              where makeItem :: Content -> Item
++              where makeItem :: Content Posn -> Item
+                     makeItem x = Item {itemtitle = title,
+                                        enclosureurl = contentToString [x]}
+ 
+ {- | Convert [Content] to a printable String, with a default if the 
+ passed-in [Content] is [], signifying a lack of a match. -}
+-contentToStringDefault :: String -> [Content] -> String
++contentToStringDefault :: String -> [Content Posn] -> String
+ contentToStringDefault msg [] = msg
+ contentToStringDefault _ x = contentToString x
+ 
+@@ -92,15 +94,18 @@ An implementation without unescaping wou
+ Because HaXml's unescaping only works on Elements, we must make sure that
+ whatever Content we have is wrapped in an Element, then use txt to
+ pull the insides back out. -}
+-contentToString :: [Content] -> String
++contentToString :: [Content Posn] -> String
+ contentToString = 
+     concatMap procContent
+     where procContent x = 
+-              verbatim $ keep /> txt $ CElem (unesc (fakeElem x))
++              verbatim $ keep /> txt $ CElem (unesc (fakeElem x)) fakePosn
+ 
+-          fakeElem :: Content -> Element
+-          fakeElem x = Elem "fake" [] [x]
++          fakeElem :: Content Posn -> Element Posn
++          fakeElem x = Elem (N "fake") [] [x]
+ 
+-          unesc :: Element -> Element
++          fakePosn :: Posn
++          fakePosn = (posInNewCxt "fakeName" Nothing)
++
++          unesc :: Element Posn -> Element Posn
+           unesc = xmlUnEscape stdXmlEscaper
+ {-- /snippet all --}

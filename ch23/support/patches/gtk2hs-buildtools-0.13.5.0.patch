@@ -1,0 +1,12 @@
+diff -rupN gtk2hs-buildtools-0.13.5.0/c2hs/c/CLexer.x new-gtk2hs-buildtools-0.13.5.0/c2hs/c/CLexer.x
+--- gtk2hs-buildtools-0.13.5.0/c2hs/c/CLexer.x	1970-01-01 01:00:00.000000000 +0100
++++ new-gtk2hs-buildtools-0.13.5.0/c2hs/c/CLexer.x	2025-08-01 14:51:49.676123965 +0200
+@@ -130,7 +130,7 @@ $white+					;
+ --  * allows further ints after the file name a la GCC; as the GCC CPP docu
+ --   doesn't say how many ints there can be, we allow an unbound number
+ --
+-\#$space*@int$space*(\"($infname|@charesc)*\"$space*)?(@int$space*)*$eol
++\#$space*@digits$space*(\"($infname|@charesc)*\"$space*)?(@int$space*)*$eol
+   { \pos len str -> setPos (adjustPos (take len str) pos) >> lexToken }
+ 
+ -- #pragma directive (K&R A12.8)

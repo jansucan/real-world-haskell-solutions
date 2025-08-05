@@ -25,6 +25,29 @@ books that were more suitable for beginners. Now I returned and I'm going to see
 how much difference it has made and whether I will be able to continue in the
 exercises.
 
+## Running the code on new systems
+
+The book was published in 2008. Even though it's old, most of the code can still
+be compiled with recent versions of GHC without any change. Only a few parts
+required minor modifications or additions. These are described in the comments
+in the source files of the exercise solutions.
+
+Where more work was needed, I wanted to keep the code in its original form as
+much as possible instead of rewriting it for new GHC or libraries. These cases
+are described here.
+
+### Chapter 23: GUI programming
+
+This chapter uses more libraries than the other chapters and I was not able to
+install all of them using recent `stack` resolvers (sets of GHC and specific
+package versions) and `Cabal` versions.
+
+I decided to create a reproducible environment consisting of an older GHC and
+compatible versions of the required libraries. Eventually, I was able to compile
+and run the application.
+
+See the [README](ch23/support/README.md) in the [ch23/support](ch23/support) directory.
+
 ## Exercises
 
 There are a few kinds of exercises:
