@@ -6,6 +6,9 @@
 -- I will use Map String [String] where the values are lists of values for a
 -- urlencoded-key. Empty list indicates no values for the key.
 
+-- For simplicity, I will not handle the encoding of spaces, reserved
+-- characters, and non-ASCII characters in the urlencoded string.
+
 {-- From examples/examples/ch10/Parse.hs and modified:
  --   removed unused code,
  --   made Parse an instance of Applicative,
