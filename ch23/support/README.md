@@ -89,7 +89,7 @@ With the environment activated, run
 > ./PodLocalMain
 ```
 
-## The GTK 2 Glade designer
+## GTK 2 Glade designer
 
 The designer is run by `glade-3` command when the environment is activated. Note
 that running just `glade` command runs the GTK 3 Glade designer included in
