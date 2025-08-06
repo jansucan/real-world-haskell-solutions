@@ -20,7 +20,6 @@ data ParseState = ParseState {
       string :: String
     } deriving (Show)
 
-
 newtype Parse a = Parse {
       runParse :: ParseState -> (a, ParseState)
     }
