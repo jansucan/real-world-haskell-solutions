@@ -171,7 +171,7 @@ are prefixed with 'Module_'.
 | **_14_a_1_**   | yes    | 352  | 14. Monads |
 | **_15_a_1_**   | yes    | 382  | 15. Programming with monads |
 | 15_a_2         | yes, in 15_a_1  |      | |
-| 15_a_3         |        |      | |
+| 15_a_3         | yes    |      | |
 | **_16_a_1_**   |        | 403  | 16. The Parsec parsing library |
 | 16_a_2         |        |      | |
 | 16_a_3         |        |      | |
