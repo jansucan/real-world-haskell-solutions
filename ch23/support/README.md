@@ -1,4 +1,4 @@
-# Support for Chapter 23: GUI programming
+# Support for Chapter 23: GUI programming with gtk2hs
 
 This directory contains all that is needed to compile and run the application
 from the chapter 23.

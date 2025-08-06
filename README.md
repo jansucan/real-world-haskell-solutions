@@ -36,7 +36,7 @@ Where more work was needed, I wanted to keep the code in its original form as
 much as possible instead of rewriting it for new GHC or libraries. These cases
 are described here.
 
-### Chapter 23: GUI programming
+### Chapter 23: GUI programming with gtk2hs
 
 This chapter uses more libraries than the other chapters and I was not able to
 install all of them using recent `stack` resolvers (sets of GHC and specific
@@ -172,7 +172,7 @@ are prefixed with 'Module_'.
 | **_15_a_1_**   | yes    | 382  | 15. Programming with monads |
 | 15_a_2         | yes, in 15_a_1  |      | |
 | 15_a_3         | yes    |      | |
-| **_16_a_1_**   |        | 403  | 16. The Parsec parsing library |
+| **_16_a_1_**   |        | 403  | 16. Using parsec |
 | 16_a_2         |        |      | |
 | 16_a_3         |        |      | |
 | 16_a_4         |        |      | |
@@ -184,10 +184,10 @@ are prefixed with 'Module_'.
 | **_19_b_1_**   |        | 465  | |
 | 19_b_2         |        |      | |
 | 19_b_3         |        |      | |
-| **_23_a_1_**   |        | 529  | 23. GUI programming |
+| **_23_a_1_**   |        | 529  | 23. GUI programming with gtk2hs|
 | 23_a_2         |        |      | |
 | 23_a_3         |        |      | |
-| **_24_a_1_**   |        | 542  | 24. Basic concurrent and parallel programming |
+| **_24_a_1_**   |        | 542  | 24. Concurrent and multicore programming |
 | 24_a_2         |        |      | |
 | **_24_b_1_**   |        | 551  | |
 | 24_b_2         |        |      | |
