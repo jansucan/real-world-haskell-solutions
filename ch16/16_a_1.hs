@@ -79,7 +79,7 @@ testReqNoContentLength = intercalate "\r\n" [
   "Accept: text/html",
   "",
   "Hello World!"
-  ] ++ "\r\n"
+  ]
 
 testReqContentLength :: Integer -> String
 testReqContentLength len = intercalate "\r\n" [
@@ -90,7 +90,7 @@ testReqContentLength len = intercalate "\r\n" [
   "Content-Length: " ++ show len,
   "",
   "Hello World!"
-  ] ++ "\r\n"
+  ]
 
 
 -- ghci> :l 16_a_1.hs
@@ -98,7 +98,7 @@ testReqContentLength len = intercalate "\r\n" [
 -- Ok, one module loaded.
 
 -- ghci> runParser p_request unlimitedContentLength "" testReqNoContentLength
--- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0"),("Accept","text/html")], reqBody = Just "Hello World!\r\n"})
+-- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0"),("Accept","text/html")], reqBody = Just "Hello World!"})
 
 -- ghci> runParser p_request unlimitedContentLength "" (testReqContentLength 0)
 -- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0"),("Accept","text/html"),("Content-Length","0")], reqBody = Just ""})
@@ -107,4 +107,4 @@ testReqContentLength len = intercalate "\r\n" [
 -- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0"),("Accept","text/html"),("Content-Length","7")], reqBody = Just "Hello W"})
 
 -- ghci> runParser p_request unlimitedContentLength "" (testReqContentLength 123)
--- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0"),("Accept","text/html"),("Content-Length","123")], reqBody = Just "Hello World!\r\n"})
+-- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0"),("Accept","text/html"),("Content-Length","123")], reqBody = Just "Hello World!"})
