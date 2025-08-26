@@ -80,7 +80,7 @@ testReqInfinitelyLongLine = intercalate "\r\n" [
   "Accept: text/html",
   "",
   "Hello World!"
-  ] ++ "\r\n"
+  ]
 
 testReq :: Int -> String
 testReq len = intercalate "\r\n" [
@@ -90,7 +90,7 @@ testReq len = intercalate "\r\n" [
   "Accept: text/html",
   "",
   "Hello World!"
-  ] ++ "\r\n"
+  ]
 
 testReqContinuation :: Int -> String
 testReqContinuation len = intercalate "\r\n" [
@@ -102,7 +102,7 @@ testReqContinuation len = intercalate "\r\n" [
   "Accept: text/html",
   "",
   "Hello World!"
-  ] ++ "\r\n"
+  ]
 
 
 -- For brevity, longs strings are shortened by '...'
@@ -116,20 +116,20 @@ testReqContinuation len = intercalate "\r\n" [
 -- Header line too long
 
 -- ghci> runParser p_request () "" (testReq 20)
--- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","uuuuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!\r\n"})
+-- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","uuuuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!"})
 
 -- ghci> runParser p_request () "" (testReq 4096)
--- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","uuu...uuuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!\r\n"})
+-- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","uuu...uuuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!"})
 
 -- ghci> runParser p_request () "" (testReq 4097)
 -- Left (line 3, column 4097):
 -- Header line too long
 
 -- ghci> runParser p_request () "" (testReqContinuation 20)
--- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0 continuation of user agent uuuuuuuuuuuuuuuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!\r\n"})
+-- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0 continuation of user agent uuuuuuuuuuuuuuuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!"})
 
 -- ghci> runParser p_request () "" (testReqContinuation 4096)
--- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0 continuation of user agent uuuuuu...uuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!\r\n"})
+-- Right (HttpRequest {reqMethod = Post, reqURL = "index.html", reqHeaders = [("Host","book.realworldhaskell.org"),("User-Agent","Mozilla/5.0 continuation of user agent uuuuuu...uuuuuu"),("Accept","text/html")], reqBody = Just "Hello World!"})
 
 -- ghci> runParser p_request () "" (testReqContinuation 4097)
 -- Left (line 5, column 4097):
