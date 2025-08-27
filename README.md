@@ -175,7 +175,7 @@ are prefixed with 'Module_'.
 | **_16_a_1_**   | yes    | 403  | 16. Using parsec |
 | 16_a_2         | yes    |      | |
 | 16_a_3         | yes    |      | |
-| 16_a_4         |        |      | |
+| 16_a_4         | yes    |      | |
 | **_18_a_1_**   |        | 436  | 18. Monad transformers |
 | 18_a_2         |        |      | |
 | 18_a_3         |        |      | |
