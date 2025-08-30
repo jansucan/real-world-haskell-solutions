@@ -176,7 +176,7 @@ are prefixed with 'Module_'.
 | 16_a_2         | yes    |      | |
 | 16_a_3         | yes    |      | |
 | 16_a_4         | yes    |      | |
-| **_18_a_1_**   |        | 436  | 18. Monad transformers |
+| **_18_a_1_**   | yes    | 436  | 18. Monad transformers |
 | 18_a_2         |        |      | |
 | 18_a_3         |        |      | |
 | **_18_b_1_**   |        | 441  | |
