@@ -177,8 +177,8 @@ are prefixed with 'Module_'.
 | 16_a_3         | yes    |      | |
 | 16_a_4         | yes    |      | |
 | **_18_a_1_**   | yes    | 436  | 18. Monad transformers |
-| 18_a_2         |        |      | |
-| 18_a_3         |        |      | |
+| 18_a_2         | yes    |      | |
+| 18_a_3         | yes, in 18_a_2  |      | |
 | **_18_b_1_**   |        | 441  | |
 | **_19_a_1_**   |        | 462  | 19. Error handling |
 | **_19_b_1_**   |        | 465  | |
