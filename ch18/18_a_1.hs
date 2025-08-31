@@ -11,8 +11,6 @@
 
 
 {-- From examples/examples/ch18/UglyStack.hs and modified --}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-
 import CountEntries (listDirectory)
 
 -- System.Directory also has listDirectory function. Hide it to not conflict
