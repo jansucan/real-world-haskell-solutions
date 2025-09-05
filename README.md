@@ -180,7 +180,7 @@ are prefixed with 'Module_'.
 | 18_a_2         | yes    |      | |
 | 18_a_3         | yes, in 18_a_2  |      | |
 | **_18_b_1_**   | yes    | 441  | |
-| **_19_a_1_**   |        | 462  | 19. Error handling |
+| **_19_a_1_**   | yes    | 462  | 19. Error handling |
 | **_19_b_1_**   |        | 465  | |
 | 19_b_2         |        |      | |
 | 19_b_3         |        |      | |
