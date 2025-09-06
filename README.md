@@ -181,7 +181,7 @@ are prefixed with 'Module_'.
 | 18_a_3         | yes, in 18_a_2  |      | |
 | **_18_b_1_**   | yes    | 441  | |
 | **_19_a_1_**   | yes    | 462  | 19. Error handling |
-| **_19_b_1_**   |        | 465  | |
+| **_Module_19_b_1_** | yes    | 465  | |
 | 19_b_2         |        |      | |
 | 19_b_3         |        |      | |
 | **_23_a_1_**   |        | 529  | 23. GUI programming with gtk2hs|
