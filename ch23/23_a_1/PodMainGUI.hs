@@ -119,7 +119,7 @@ guiAdd gui dbh =
     where procOK =
               do url <- entryGetText (awEntry gui)
                  widgetHide (addWin gui) -- Remove the dialog
-                 add dbh url             -- Add to the DB
+                 addUrl dbh url             -- Add to the DB
 {-- /snippet guiAdd --}
 
 {-- snippet statusWindow --}
@@ -184,7 +184,7 @@ guiFetch gui dbh =
 {-- /snippet statusWindowFuncs --}
 
 {-- snippet workerFuncs --}
-add dbh url = 
+addUrl dbh url = 
     do addPodcast dbh pc
        commit dbh
     where pc = Podcast {castId = 0, castURL = url}
