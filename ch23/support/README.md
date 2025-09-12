@@ -85,7 +85,7 @@ Go to the directory with code for the chapter and run `patch -p1 < /path/to/the/
 
 With the environment activated, run
 ```
-> ghc PodLocalMain.sh
+> ghc PodLocalMain.hs
 > ./PodLocalMain
 ```
 
