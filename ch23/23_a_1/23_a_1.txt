@@ -1,0 +1,1 @@
+Present a helpful GUI error message if the call to xmlNew returns Nothing.

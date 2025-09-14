@@ -47,28 +47,39 @@ main gladepath = withSocketsDo $ handleSqlError $
        timeoutAddFull (yield >> return True)
                       priorityDefaultIdle 100
 
-       -- Load the GUI from the Glade file
-       gui <- loadGlade gladepath
+       -- Load XML from glade path
+       xmlGlade <- xmlNew gladepath
+       case xmlGlade of
+         Nothing -> do
+           let errorMsg = "Cannot load glade file " ++ gladepath
+           d <- messageDialogNew Nothing -- No parent window
+                                 [] -- No dialog flags
+                                 MessageError
+                                 ButtonsClose
+                                 errorMsg
+           windowSetTitle d "Error"
+           dialogRun d
+           return ()
+         Just xml -> do
+           -- Load the GUI from the Glade file
+           gui <- loadGlade xml
 
-       -- Connect to the database
-       dbh <- connect "pod.db"
+           -- Connect to the database
+           dbh <- connect "pod.db"
 
-       -- Set up our events 
-       connectGui gui dbh
+           -- Set up our events 
+           connectGui gui dbh
 
-       -- Run the GTK+ main loop; exits after GUI is done
-       mainGUI
+           -- Run the GTK+ main loop; exits after GUI is done
+           mainGUI
        
-       -- Disconnect from the database at the end
-       disconnect dbh
+           -- Disconnect from the database at the end
+           disconnect dbh
 {-- /snippet main --}
 
 {-- snippet loadGlade --}
-loadGlade gladepath =
-    do -- Load XML from glade path.
-       -- Note: crashes with a runtime error on console if fails!
-       Just xml <- xmlNew gladepath
-
+loadGlade xml =
+    do
        -- Load main window
        mw <- xmlGetWidget xml castToWindow "mainWindow"
 
