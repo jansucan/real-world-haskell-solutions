@@ -1,1 +1,59 @@
-Present a helpful GUI error message if the call to xmlNew returns Nothing.
+1. Present a helpful GUI error message if the call to xmlNew returns Nothing.
+
+2. Modify the podcatcher to be able to run with either the GUI or the
+   command-line interface from a single code base. Hint: move common code out of
+   PodMainGUI.hs, then have two different Main modules, one for the GUI, and one
+   for the command line.
+
+
+
+
+Testing 1.:
+  Steps:
+    - Compile PodMainGUI
+    - Remove podresources.glade file
+    - Run PodMainGUI
+  Result:
+    - Error dialog window informing that podresources.glade file has not been
+      found is displayed
+
+
+Testing 2.:
+  Steps:
+    - Compile PodMainGUI
+    - Run PodMainGUI
+    - Add a podcast
+    - Click Update
+    - Click Download
+  Result:
+    - The mp3 files have been downloaded
+
+  Steps:
+    - Exit PodMainGUI
+    - Remove pod.db file
+    - Remove the mp3 files
+    - Run PodMainGUI
+    - Add a podcast
+    - Click Fetch
+  Result:
+    - The mp3 files have been downloaded
+
+  Steps:
+    - Exit PodMainGUI
+    - Compile PodMainCLI
+    - Run PodMainCLI
+    - Add a podcast
+    - Run Update
+    - Run Download
+  Result:
+    - The mp3 files have been downloaded
+
+  Steps:
+    - Exit PodMainCLI
+    - Remove pod.db file
+    - Remove the mp3 files
+    - Run PodMainCLI
+    - Add a podcast
+    - Run Fetch
+  Result:
+    - The mp3 files have been downloaded
