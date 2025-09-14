@@ -3,32 +3,35 @@ module PodDownload where
 import PodTypes
 import PodDB
 import PodParser
-import Network.HTTP
+import Network.HTTP.Conduit
+import Network.HTTP.Types.Method
+import Network.HTTP.Types.Status
 import System.IO
 import Database.HDBC
 import Data.Maybe
 import Network.URI
 
+import qualified Data.Text.Lazy as LT
+import qualified Data.Text.Lazy.Encoding as LTE
+import qualified Data.Text as T
+import qualified Data.Text.Encoding as TE
+import qualified Data.ByteString.Lazy as LBS
+
 {- | Download a URL.  (Left errorMessage) if an error,
 (Right doc) if success. -}
-downloadURL :: String -> IO (Either String String)
+downloadURL :: String -> IO (Either String LBS.ByteString)
 downloadURL url =
-    do resp <- simpleHTTP request
-       case resp of
-         Left x -> return $ Left ("Error connecting: " ++ show x)
-         Right r -> 
-             case rspCode r of
-               (2,_,_) -> return $ Right (rspBody r)
-               (3,_,_) -> -- A HTTP redirect
-                 case findHeader HdrLocation r of
-                   Nothing -> return $ Left (show r)
-                   Just url -> downloadURL url
-               _ -> return $ Left (show r)
-    where request = Request {rqURI = uri,
-                             rqMethod = GET,
-                             rqHeaders = [],
-                             rqBody = ""}
-          uri = fromJust $ parseURI url
+    do initReq <- parseRequest url
+       let request = initReq { method = methodGet }
+       manager <- newManager tlsManagerSettings
+       resp <- httpLbs request manager
+       let status = responseStatus resp
+       -- httpLbs follows redirections (up to the limit specified in the
+       -- request, default is 10). No need to handle redirections explicitly
+       -- here.
+       if statusIsSuccessful status
+         then return $ Right $ responseBody resp
+         else return $ Left $ T.unpack $ TE.decodeUtf8 $ statusMessage status
 
 {- | Update the podcast in the database. -}
 updatePodcastFromFeed :: IConnection conn => conn -> Podcast -> IO ()
@@ -36,7 +39,7 @@ updatePodcastFromFeed dbh pc =
     do resp <- downloadURL (castURL pc)
        case resp of
          Left x -> putStrLn x
-         Right doc -> updateDB doc
+         Right doc -> updateDB $ LT.unpack $ LTE.decodeUtf8 $ doc
 
     where updateDB doc = 
               do mapM_ (addEpisode dbh) episodes
@@ -53,9 +56,7 @@ getEpisode dbh ep =
          Left x -> do putStrLn x
                       return Nothing
          Right doc -> 
-             do file <- openBinaryFile filename WriteMode
-                hPutStr file doc
-                hClose file
+             do LBS.writeFile filename doc
                 updateEpisode dbh (ep {epDone = True})
                 commit dbh
                 return (Just filename)
