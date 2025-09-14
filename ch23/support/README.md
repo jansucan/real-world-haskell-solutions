@@ -79,7 +79,14 @@ those in a normal shell session without the environment activated.
 
 ### Patching the code of chapter 23
 
-Go to the directory with code for the chapter and run `patch -p1 < /path/to/the/ch23.patch`.
+Go to the directory with code for the chapter and run
+```
+patch -p1 < /path/to/the/ch23.patch
+patch -p1 < /path/to/the/ch23_https.patch
+```
+The second patch is not necessary for getting the code to compile, but it
+enables HTTPS support for testing the podcast downloader with modern podcast
+feeds which are accessible via HTTPS. The original downloader support only HTTP.
 
 ### Compiling and running the application
 
