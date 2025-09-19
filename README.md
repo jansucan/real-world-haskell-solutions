@@ -187,7 +187,7 @@ are prefixed with 'Module_'.
 | **_23_a_1_**   | yes    | 529  | 23. GUI programming with gtk2hs|
 | 23_a_2         | yes, in 23_a_1  |      | |
 | 23_a_3         | yes    |      | |
-| **_24_a_1_**   |        | 542  | 24. Concurrent and multicore programming |
+| **_24_a_1_**   | yes    | 542  | 24. Concurrent and multicore programming |
 | 24_a_2         |        |      | |
 | **_24_b_1_**   |        | 551  | |
 | 24_b_2         |        |      | |
