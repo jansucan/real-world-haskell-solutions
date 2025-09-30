@@ -188,7 +188,7 @@ are prefixed with 'Module_'.
 | 23_a_2         | yes, in 23_a_1  |      | |
 | 23_a_3         | yes    |      | |
 | **_24_a_1_**   | yes    | 542  | 24. Concurrent and multicore programming |
-| 24_a_2         |        |      | |
+| 24_a_2         | yes    |      | |
 | **_24_b_1_**   |        | 551  | |
 | 24_b_2         |        |      | |
 | **_26_a_1_**   |        | 610  | 26. Advanced library design: building a Bloom filter |
